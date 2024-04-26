@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.content.pm.ServiceInfo;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 import app.notifee.core.event.ForegroundServiceEvent;
@@ -91,7 +92,7 @@ public class ForegroundService extends Service {
 
         if (mCurrentNotificationId == null) {
           mCurrentNotificationId = notificationModel.getId();
-          startForeground(hashCode, notification);
+          startForeground(hashCode, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST);
 
           // On headless task complete
           final MethodCallResult<Void> methodCallResult =
